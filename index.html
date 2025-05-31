@@ -130,6 +130,19 @@
             border: none;
         }
 
+        .announcement {
+            background: #ffe600;
+            color: #000;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            text-shadow: none;
+        }
+
         footer {
             width: 100%;
             background: rgba(0, 0, 0, 0.6);
@@ -157,6 +170,19 @@
             iframe.trailer {
                 height: 260px;
             }
+
+            .announcement {
+                font-size: 1rem;
+                padding: 10px;
+            }
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            font-size:x-large;
+            color: rgb(233, 47, 44);
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -168,25 +194,17 @@
     </header>
 
     <div class="container">
-        <img src="https://via.placeholder.com/900x450.png?text=Housefull+5+Poster" alt="Housefull 5 Poster"
+        <img src="photo.jpg" alt="Housefull 5 Poster"
             class="poster" />
 
         <h2>🎞 Official Trailer</h2>
-        <iframe class="trailer" width="560" height="315"
-            src="https://www.youtube.com/embed/niAGgwJ91Ac?si=H6gCDBnqhcsRCkxi&autoplay=1&mute=1"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe class="trailer" src="https://www.youtube.com/embed/niAGgwJ91Ac?si=H6gCDBnqhcsRCkxi&autoplay=1&mute=1"
+            title="YouTube video player" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-        <h2>🎵 Songs</h2>
-        <video width="100%" height="auto" controls poster="song-thumbnail.jpg"
-            style="border-radius: 15px; margin-bottom: 30px; box-shadow: 0 8px 30px rgba(255, 75, 43, 0.8);">
-            <source src="lalpari.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-
-
-
+        <!-- Bilingual Announcement -->
+        <div class="announcement">
+            <a href="#">📣 You'll get to watch the movie here first on June 6 – <strong>आपको यह मूवी सबसे पहले यहीं 6 जून को देखने को मिलेगी!</strong></a>
+        </div>
 
         <h2>📜 Description</h2>
         <p>
@@ -213,7 +231,7 @@
     </div>
 
     <footer>
-        &copy; 2025 Housefull 5 | Designed by YourName
+        &copy; 2025 Housefull 5 | Designed by anuj7788
     </footer>
 </body>
 
