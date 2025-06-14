@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #ffe600;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ffe600;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        header p {
+            margin-top: 10px;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: #fff7b2;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            max-width: 900px;
+            margin: 40px 20px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+            flex-grow: 1;
+        }
+
+        .poster {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(255, 75, 43, 0.7);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .poster:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            color: #ffde59;
+            margin-top: 0;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+            font-size: 2rem;
+            border-bottom: 2px solid #ffde59;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #f0e68c;
+            margin-bottom: 25px;
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+        }
+
+        ul.cast-list {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        ul.cast-list li {
+            background: #ff6e40;
+            padding: 10px 18px;
+            border-radius: 20px;
+            box-shadow: 0 3px 10px rgba(255, 110, 64, 0.6);
+            font-weight: 600;
+            font-size: 1.1rem;
+            flex: 1 1 130px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        ul.cast-list li::before {
+            content: "🎭";
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.3rem;
+            filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+        }
+
+        iframe.trailer {
+            width: 100%;
+            height: 450px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(255, 75, 43, 0.8);
+            margin-bottom: 35px;
+            border: none;
+        }
+
+        .announcement {
+            background: #ffe600;
+            color: #000;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            text-shadow: none;
+        }
+
+        footer {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9rem;
+            color: #ffe600;
+            letter-spacing: 1.2px;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            ul.cast-list li {
+                flex: 1 1 100%;
+            }
+
+            iframe.trailer {
+                height: 260px;
+            }
+
+            .announcement {
+                font-size: 1rem;
+                padding: 10px;
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            font-size: x-large;
+            color: rgb(233, 47, 44);
+            text-decoration: underline;
+        }
