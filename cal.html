@@ -6,111 +6,209 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Segoe UI", Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: #f4f4f9;
+            background: radial-gradient(circle at top, #141E30, #0f0f0f);
+            margin: 0;
         }
-        .calculator {
-            background: white;
-            padding: 20px;
+
+        /* Container for both label + calculator */
+        .calc-container {
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .calc-container:hover {
+            transform: scale(1.05);
+        }
+        .dev-label {
+            font-size: 30px;
+            color: #f73b1a;
+            margin-bottom: 12px;
+            text-shadow: 0 0 8px rgba(255, 98, 0, 0.8);
+            transition: color 0.3s, text-shadow 0.3s;
+            border: 5px double  #009dff;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            width: 250px;
+            margin-bottom: 10%;
         }
+
+        .calc-container:hover .dev-label {
+            color: #48f30f;
+            text-shadow: 0 0 15px rgba(0, 255, 200, 1);
+            border-color: #d619c6;
+        }
+
+        .calculator {
+            background: rgba(30, 30, 50, 0.7);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+            width: 320px;
+            transition: box-shadow 0.4s ease;
+        }
+
+        .calc-container:hover .calculator {
+            box-shadow: 0 10px 35px rgba(0, 255, 200, 0.3);
+        }
+
         #display {
             width: 100%;
-            height: 40px;
-            font-size: 18px;
-            margin-bottom: 10px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            height: 60px;
+            font-size: 24px;
+            margin-bottom: 18px;
+            padding: 10px;
+            border: none;
+            border-radius: 12px;
             text-align: right;
+            background: rgba(20, 20, 30, 0.8);
+            color: #00fff2;
+            box-shadow: inset 0 0 10px rgba(0, 255, 200, 0.4);
+            outline: none;
+            transition: box-shadow 0.3s ease;
         }
+
         .buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 14px;
         }
+
         button {
-            padding: 15px;
-            font-size: 16px;
+            padding: 18px;
+            font-size: 18px;
             border: none;
-            border-radius: 8px;
-            background: #e0e0e0;
+            border-radius: 12px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.25s ease;
+            color: #fff;
+            background: rgba(40, 40, 60, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5),
+                        inset 0 -3px 6px rgba(255, 255, 255, 0.05);
         }
+
         button:hover {
-            background: #d4d4d4;
+            transform: translateY(-3px);
+            filter: brightness(1.2);
         }
+
+        button:active {
+            transform: scale(0.92);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) inset;
+        }
+
+        /* Number buttons */
+        button.num {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            box-shadow: 0 0 8px rgba(0, 195, 255, 0.4);
+        }
+        button.num:hover {
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.8);
+        }
+
+        /* Operator buttons */
+        button.op {
+            background: linear-gradient(145deg, #3a0ca3, #5f0f40);
+            box-shadow: 0 0 8px rgba(255, 0, 150, 0.5);
+        }
+        button.op:hover {
+            box-shadow: 0 0 15px rgba(255, 0, 150, 0.9);
+        }
+
+        /* Equal button */
         .equal {
-            background: #4caf50;
-            color: white;
+            background: linear-gradient(145deg, #00c853, #009624);
+            box-shadow: 0 0 10px rgba(0, 255, 100, 0.6);
         }
         .equal:hover {
-            background: #45a049;
+            box-shadow: 0 0 20px rgba(0, 255, 100, 0.9);
+        }
+
+        /* Clear button */
+        #clear {
+            background: linear-gradient(145deg, #d81b60, #880e4f);
+            grid-column: span 2;
+            box-shadow: 0 0 10px rgba(255, 0, 120, 0.6);
+        }
+        #clear:hover {
+            box-shadow: 0 0 20px rgba(255, 0, 120, 0.9);
+        }
+
+        /* Backspace button */
+        #backspace {
+            background: linear-gradient(145deg, #ff9800, #e65100);
+            grid-column: span 2;
+            box-shadow: 0 0 10px rgba(255, 152, 0, 0.6);
+        }
+        #backspace:hover {
+            box-shadow: 0 0 20px rgba(255, 180, 0, 0.9);
         }
     </style>
 </head>
 <body onload="brython()">
 
-<div class="calculator">
-    <input id="display" readonly>
-    <div class="buttons">
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>/</button>
+<div class="calc-container">
+    <div class="dev-label">Developed by Akash</div>
+    <div class="calculator">
+        <input id="display" readonly>
+        <div class="buttons">
+            <button class="num">7</button>
+            <button class="num">8</button>
+            <button class="num">9</button>
+            <button class="op">/</button>
 
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>*</button>
+            <button class="num">4</button>
+            <button class="num">5</button>
+            <button class="num">6</button>
+            <button class="op">*</button>
 
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>-</button>
+            <button class="num">1</button>
+            <button class="num">2</button>
+            <button class="num">3</button>
+            <button class="op">-</button>
 
-        <button>0</button>
-        <button>.</button>
-        <button class="equal">=</button>
-        <button>+</button>
+            <button class="num">0</button>
+            <button class="num">.</button>
+            <button class="equal">=</button>
+            <button class="op">+</button>
 
-        <button colspan="4" id="clear">C</button>
+            <button id="clear">C</button>
+            <button id="backspace">⌫</button>
+        </div>
     </div>
 </div>
 
 <script type="text/python">
-from browser import document, html
+from browser import document
 
 display = document["display"]
 
-# Append character to display
 def add_char(event):
     display.value += event.target.text
 
-# Evaluate expression
 def calculate(event):
     try:
         display.value = str(eval(display.value))
     except:
         display.value = "Error"
 
-# Clear display
 def clear_display(event):
     display.value = ""
 
-# Bind buttons
+def backspace(event):
+    display.value = display.value[:-1]
+
 for btn in document.select("button"):
     if btn.text == "=":
         btn.bind("click", calculate)
-    elif btn.text == "C":
+    elif btn.id == "clear":
         btn.bind("click", clear_display)
+    elif btn.id == "backspace":
+        btn.bind("click", backspace)
     else:
         btn.bind("click", add_char)
 </script>
