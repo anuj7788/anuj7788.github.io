@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Brython Calculator</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f4f9;
+        }
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            width: 250px;
+        }
+        #display {
+            width: 100%;
+            height: 40px;
+            font-size: 18px;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: right;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        button {
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #e0e0e0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #d4d4d4;
+        }
+        .equal {
+            background: #4caf50;
+            color: white;
+        }
+        .equal:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body onload="brython()">
+
+<div class="calculator">
+    <input id="display" readonly>
+    <div class="buttons">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>/</button>
+
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>*</button>
+
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>-</button>
+
+        <button>0</button>
+        <button>.</button>
+        <button class="equal">=</button>
+        <button>+</button>
+
+        <button colspan="4" id="clear">C</button>
+    </div>
+</div>
+
+<script type="text/python">
+from browser import document, html
+
+display = document["display"]
+
+# Append character to display
+def add_char(event):
+    display.value += event.target.text
+
+# Evaluate expression
+def calculate(event):
+    try:
+        display.value = str(eval(display.value))
+    except:
+        display.value = "Error"
+
+# Clear display
+def clear_display(event):
+    display.value = ""
+
+# Bind buttons
+for btn in document.select("button"):
+    if btn.text == "=":
+        btn.bind("click", calculate)
+    elif btn.text == "C":
+        btn.bind("click", clear_display)
+    else:
+        btn.bind("click", add_char)
+</script>
+
+</body>
+</html>
