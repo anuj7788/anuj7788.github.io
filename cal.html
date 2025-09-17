@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,10 +43,18 @@
             padding: 8px;
         }
 
+        .dev-label::after {
+            content: "Developed by Akash";
+        }
+
         .calc-container:hover .dev-label {
             color: #48f30f;
             text-shadow: 0 0 15px rgba(0, 255, 200, 1);
             border-color: #d619c6;
+        }
+
+        .calc-container:hover .dev-label::after {
+            content: "Welcome in Calculator";
         }
 
         .calculator {
@@ -194,7 +203,7 @@
 <body onload="brython()">
 
 <div class="calc-container">
-    <div class="dev-label">Developed by Akash</div>
+    <div class="dev-label"></div>
     <div class="calculator">
         <input id="display" readonly>
         <div class="buttons">
